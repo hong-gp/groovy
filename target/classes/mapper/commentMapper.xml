@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.groovy.Comment">
+
+	<delete id="deleteAll" parameterType="int">
+		delete from comment where bno=#{bno}
+	</delete>
+	
+	<select id="count" parameterType="int" resultType="int">
+		select count(*) from comment
+		where bno=#{bno}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from comment where cno=#{cno}
+	</delete>
+	
+	<insert id="insert" parameterType="Comment" useGeneratedKeys="true" keyProperty="cno">
+		insert into comment(bno, comment, commenter, commenter_nickname)
+		values (#{bno}, #{comment}, #{commenter}, #{commenter_nickname})
+	</insert>
+	
+	<select id="selectAll" parameterType="int" resultType="Comment">
+		select * from comment where bno=#{bno}
+		order by reg_date asc, cno asc
+	</select>
+	
+	<select id="select" parameterType="int" resultType="Comment">
+		select * from comment where cno=#{cno}
+	</select>
+	
+	<select id="maxRef" parameterType="int" resultType="int">
+		select ifnull(max(ref), 0) from comment where bno=#{bno}
+	</select>
+	
+	<select id="maxStep" resultType="integer" parameterType="integer">
+		select ifnull(max(re_step), 0) from comment where ref=#{ref}
+	</select>
+	
+	<select id="step" resultType="int" parameterType="map">
+		select re_step from comment where pcno=#{pcno} and re_level=#{re_level} order by re_step desc limit 1
+	</select>
+	
+	<select id="selectLast" resultType="int">
+		select MAX(cno) from comment
+	</select>
+	
+	<update id="updateStep" parameterType="Comment">
+		update comment set re_step = re_step + 1 where ref=#{ref} and re_step >= #{re_step}
+	</update>
+	
+	<update id="update" parameterType="Comment">
+		update comment set comment=#{comment}
+		where cno=#{cno} and commenter=#{commenter}
+	</update>
+	
+	<update id="isdel" parameterType="map">
+		update comment set isdel=1 where cno=#{cno} and commenter=#{commenter}
+	</update>
+	
+	<select id="selectRef" parameterType="int" resultType="Comment">
+		select * from comment where ref=#{ref}
+	</select>
+	
+	<!-- 댓글에 대댓글이 없으면 바로 삭제, 있으면 대댓글이 삭제되어야 삭제 -->
+	<select id="selectPcno" parameterType="int" resultType="Comment">
+		select * from comment where pcno=#{pcno}
+	</select>
+	
+	<update id="updateRecnt" parameterType="map">
+		update comment set recnt=#{recnt} where cno=#{cno}
+	</update>
+	
+	<sql id="selectFromComment">
+		select * from comment
+	</sql>
+	
+	<select id="searchSelectPage" parameterType="map" resultType="Comment">
+		<include refid="selectFromComment" />
+		where bno = #{bno}
+		order by ref asc, re_step asc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+</mapper>

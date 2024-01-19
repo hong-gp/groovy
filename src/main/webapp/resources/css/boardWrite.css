@@ -1,0 +1,58 @@
+@charset "UTF-8";
+#write_box {
+    width: 74%;
+}
+#write_box .write_category {
+    width: 100%;
+    margin-top: 30px;
+}
+#write_box .write_category select[name=category] {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+#write_box .write_title {
+    margin: 10px 0;
+}
+#write_box .write_title input {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+#write_box .write_body {
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#write_box .write_body .write_content {
+    height: 430px;
+    padding: 10px;
+}
+#write_box .write_body .write_content textarea {
+    resize: none;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    border-radius: 5px;
+}
+#write_box .write_footer div:nth-child(1) {
+    float: left;
+}
+#write_box .write_footer div:nth-child(2) {
+    text-align: right;
+}
+#write_box .write_body .write_tool {
+    height: 70px;
+    background: #eee;
+    border-radius: 5px 5px 0px 0px;
+    padding: 14px 5px;
+}

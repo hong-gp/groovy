@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.groovy.newsComment">
+
+	<delete id="deleteAll" parameterType="int">
+		delete from newscomment where nno=#{nno}
+	</delete>
+	
+	<select id="count" parameterType="int" resultType="int">
+		select count(*) from newscomment
+		where nno=#{nno}
+	</select>
+	
+	<delete id="delete" parameterType="map">
+		delete from newscomment where cno=#{cno} and commenter=#{commenter}
+	</delete>
+	
+	<insert id="insert" parameterType="NewsComment" useGeneratedKeys="true" keyProperty="cno">
+		insert into newscomment(nno, comment, commenter, commenter_nickname)
+		values (#{nno}, #{comment}, #{commenter}, #{commenter_nickname})
+	</insert>
+	
+	<select id="selectAll" parameterType="int" resultType="NewsComment">
+		select * from newscomment where nno=#{nno}
+		order by reg_date desc, cno desc
+	</select>
+	
+	<select id="select" parameterType="int" resultType="NewsComment">
+		select * from newscomment where cno=#{cno}
+	</select>
+	
+	<update id="update" parameterType="NewsComment">
+		update newscomment set comment=#{comment} 
+		where cno=#{cno} and commenter=#{commenter}
+	</update>
+</mapper>

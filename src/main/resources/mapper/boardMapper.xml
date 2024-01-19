@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.groovy.Board">
+
+	<select id="count" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<select id="selectAll" resultType="Board">
+		select * from board order by postdate desc, num desc;
+	</select>
+	
+	<select id="select" parameterType="int" resultType="Board">
+		select * from board where num=#{num}
+	</select>
+	
+	<delete id="deleteAll">
+		delete from board
+	</delete>
+	
+	<delete id="delete" parameterType="map">
+		delete from board where num=#{num} and writer=#{writer}
+	</delete>
+	
+	<insert id="insert" parameterType="Board">
+		insert into board (category, title, content, writer, writer_nickname, img_src)
+		values (#{category}, #{title}, #{content}, #{writer}, #{writer_nickname}, #{img_src})
+	</insert>
+	
+	<update id="increaseViewCnt" parameterType="int">
+		update board set view_cnt = view_cnt + 1
+		where num = #{num}
+	</update>
+	
+	<update id="update" parameterType="Board">
+		update board 
+		set category = #{category}, title = #{title}, content = #{content}, img_src = #{img_src}
+		where num = #{num} and writer=#{writer}
+	</update>
+	
+	<sql id="searchCondition">
+		<choose>
+			<when test='optionSearch=="T"'>
+				and title like concat('%', #{keyword}, '%')
+			</when>
+			<when test='optionSearch=="N"'>
+				and writer_nickname like concat('%', #{keyword}, '%')
+			</when>
+			<otherwise>
+				and (title like concat('%', #{keyword}, '%')
+ 				or content like concat('%', #{keyword}, '%'))
+			</otherwise>
+		</choose>
+	</sql>
+	<sql id="searchConditionCategory">
+		<choose>
+			<when test='optionCategory=="M"'>
+				and category = "music"
+			</when>
+			<when test='optionCategory=="R"'>
+				and category = "review"
+			</when>
+			<otherwise>
+			
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<sql id="selectFromBoard">
+		select * from board
+	</sql>
+	
+	<select id="selectPage" parameterType="map" resultType="Board">
+		<include refid="selectFromBoard" />
+		order by postdate desc, num desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="searchSelectPage" parameterType="SearchCondition" resultType="Board">
+		<include refid="selectFromBoard" />
+		where true
+		<include refid="searchCondition" />
+		<include refid="searchConditionCategory" />
+		order by postdate desc, num desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+		select count(*) from board
+		where true
+		<include refid="searchCondition" />
+		<include refid="searchConditionCategory" />
+	</select>
+	
+	<update id="updateLikeCnt" parameterType="map">
+		update board
+		set like_cnt = like_cnt + #{like_cnt}
+		where num = #{num}
+	</update>
+	
+	<update id="updateCommentCnt" parameterType="map">
+		update board
+		set comment_cnt = comment_cnt + #{comment_cnt}
+		where num = #{num}
+	</update>
+	
+	<delete id="deleteLikeAll">
+		delete from boardLike
+	</delete>
+	
+	<select id="selectLike" parameterType="map" resultType="integer">
+		select count(*) from boardLike where bno=#{bno} and id=#{id}
+	</select>
+	
+	<insert id="insertLike" parameterType="map">
+		insert into boardLike (id, bno) values (#{id}, #{bno})
+	</insert>
+	
+	<delete id="deleteLike" parameterType="map">
+		delete from boardLike where id=#{id} AND bno=#{bno}
+	</delete>
+	
+	<select id="selectBestBoard" resultType="map">
+		select bno, count(*) as count from boardlike 
+		where date(reg_date) = date(now()) 
+		group by bno order by count desc limit 5
+	</select>
+</mapper>

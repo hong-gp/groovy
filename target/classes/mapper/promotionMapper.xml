@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.groovy.Promotion">
+
+	<delete id="deleteAll">
+		delete from promotion
+	</delete>
+	
+	<delete id="delete" parameterType="int">
+		delete from promotion where num=#{num}
+	</delete>
+	
+	<select id="selectAll" resultType="Promotion">
+		select * from promotion
+	</select>
+	
+	<select id="select" parameterType="int" resultType="Promotion">
+		select * from promotion where num=#{num}
+	</select>
+	
+	<select id="selectRandom" resultType="Promotion">
+		select * from promotion ORDER BY RAND() LIMIT 1
+	</select>
+	
+	<update id="update" parameterType="Promotion">
+		update promotion set title=#{title}, img_src=#{img_src}, link=#{link}
+		where num=#{num}
+	</update>
+
+	<insert id="insert" parameterType="Promotion">
+		insert into promotion(title, img_src, link)
+		values (#{title}, #{img_src}, #{link})
+	</insert>
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+		
+<configuration>
+	<typeAliases>
+		<typeAlias alias="User" type="com.project.groovy.model.User"/>
+		<typeAlias alias="Board" type="com.project.groovy.model.Board"/>
+		<typeAlias alias="SearchCondition" type="com.project.groovy.model.SearchCondition"/>
+		<typeAlias alias="Comment" type="com.project.groovy.model.Comment"/>
+		<typeAlias alias="Review" type="com.project.groovy.model.Review"/>
+		<typeAlias alias="Admin" type="com.project.groovy.admin.Admin"/>
+		<typeAlias alias="News" type="com.project.groovy.model.News"/>
+		<typeAlias alias="NewsComment" type="com.project.groovy.model.NewsComment"/>
+		<typeAlias alias="Promotion" type="com.project.groovy.model.Promotion"/>
+	</typeAliases>
+</configuration>

@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Black';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+div, a, span {
+	font-family: 'Pretendard-Regular';
+}
+.search_box {
+    width: 74%;
+}
+.search_album {
+    margin-top: 30px;
+}
+.search_body {
+    margin-top: 10px;
+    background: #edf2f4;
+    padding: 20px;
+    border-radius: 10px;
+}
+.search_body .search_body_header .search_body_th {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+}
+.search_body .search_body_header .search_body_th .average {
+    padding-right: 28px;
+    display: inline-block;
+}
+.search_body .search_body_header .search_body_th .rate {
+    padding-right: 26px;
+    display: inline-block;
+}
+.search_body .search_list {
+    display: flex;
+    padding: 20px 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+}
+.search_body .search_list:hover {
+	box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+}
+.search_body .search_list .album_thum {
+    max-width: 120px;
+    width: 100%;
+    max-height: 120px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.search_body .search_list .album_thum img {
+    width: 100%;
+}
+.search_body .search_list .album_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 20px;
+}
+.search_body .search_list .album_info .album_title,
+.search_body .search_list .album_info .album_artist {
+    font-weight: 700;
+}
+.search_body .search_list .album_info .album_title a {
+	font-weight: 700;
+    color: #2b2d42;
+    font-size: 16px;
+}
+.search_body .search_list .album_info .album_artist {
+	font-weight: 700;
+    color: #8d99ae;
+}
+.search_body .search_list .album_info .album_date {
+    font-size: 14px;
+}
+.search_body .search_list .album_info .album_genre {
+    font-size: 14px;
+    color: #2b2d42;
+}
+.search_body .search_list .album_average {
+    line-height: 120px;
+    margin-left: auto;
+    padding-right: 35px;
+}
+.search_body .search_list .album_average span {
+	font-family: 'Pretendard-Black';
+    font-size: 22px;
+    background: linear-gradient(to right top, #d90429, #ffa69e);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.search_body .search_list .album_rate {
+    line-height: 120px;
+    padding-right: 22px;
+}
+
+#page {
+	text-align: center;
+	margin-top: 15px;
+}
+#page a {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	font-size: 14px;
+}
+.active {
+	background: red;
+	color: #fff;
+	border-radius: 50%;
+}

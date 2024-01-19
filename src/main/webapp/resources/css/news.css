@@ -1,0 +1,27 @@
+#news .news_contents {
+    width: 70%;
+}
+#news .news_content {
+    margin-bottom: 40px;
+}
+#news .news_content a {
+    color: #000;
+}
+#news .news_content a:hover {
+    text-decoration: underline;
+}
+#news .news_thum img {
+    width: 100%;
+    max-height: 390px;
+    object-fit: cover;
+}
+#news .news_body {
+    line-height: 2em;
+}
+#news .news_body .news_date,
+#news .news_body .news_preview {
+    color: #666;
+}
+#news .news_body .news_date {
+    margin-bottom: 10px;
+}

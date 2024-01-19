@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+input, label, button, select, li, span {
+	font-family: 'Pretendard-Regular';
+}
+#container {
+    width: 550px;
+    min-height: 750px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #edf2f4;
+    border: 1px solid #eee;
+}
+#contents {
+    width: 400px;
+    min-height: 750px;
+    margin: 0 auto;
+}
+#contents .logo {
+    padding: 30px 0;
+}
+#contents .logo h2 {
+    display: inline-block;
+}
+#contents .input_area {
+    font-size: 16px;
+}
+#contents .input_area li {
+    margin-bottom: 10px;
+}
+#contents .input_area span {
+    color: #FF2626;
+}
+#contents .input_area li>label {
+    float: left;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+}
+#contents .input_area input[type='text'],
+#contents .input_area input[type='password'],
+#contents .input_area input[type='tel'] {
+    width: 300px;
+    height: 40px;
+    font-size: 14px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #222;
+}
+#contents #mail1 {
+    width: 141px;
+}
+#contents #mail2 {
+    width: 136px;
+    height: 40px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #222;
+    border-radius: 5px;
+}
+#contents .radio_area {
+    font-size: 16px;
+    line-height: 40px;
+}
+#contents .radio_area label {
+    color: #222;
+    cursor: pointer;
+}
+#contents .radio_area input[type='radio'] {
+    margin-right: 20px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+#contents .checkbox_area {
+    width: 400px;
+    margin-top: 30px;
+}
+#contents .checkbox_area .area1 {
+    width: 400px;
+    padding: 10px 0;
+    border-bottom: 1px solid #aaa;
+}
+#contents .checkbox_area .area2 {
+    width: 400px;
+    padding-top: 10px;
+}
+#contents .checkbox_area label {
+    display: inline-block;
+    width: 360px;
+    font-size: 16px;
+}
+#contents .checkbox_area input[type='checkbox'] {
+    width: 20px;
+    height: 16px;
+    margin-top: 3px;
+}
+.check {
+    display: flex;
+    margin-top: 5px;
+}
+#contents .button_area {
+    margin-top: 30px;
+    width: 400px;
+}
+#contents .button_area button {
+    width: 400px;
+    height: 45px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: #ef233c;
+    color: #fff;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+.alert {
+    position: relative;
+    font-size: 14px;
+    left: 100px;
+}

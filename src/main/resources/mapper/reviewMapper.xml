@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.groovy.Review">
+
+	<select id="selectA" resultType="Review">
+		select * from review
+	</select>
+
+	<select id="selectAllReview" resultType="Review">
+		select album_id, count(*) from review 
+		GROUP BY album_id order by count(*) desc;
+	</select>
+	
+	<select id="selectReviewAvg" resultType="map" parameterType="String">
+		SELECT AVG(rate) as avg, count(*) as count FROM review 
+		where album_id=#{album_id};
+	</select>
+
+	<select id="count" parameterType="String" resultType="integer">
+		select count(*) from review where album_id=#{album_id}
+	</select>
+
+	<select id="selectAll" resultType="Review" parameterType="String">
+		select * from review where album_id=#{album_id}
+	</select>
+	
+	<select id="selectReviewUser" parameterType="String" resultType="Review">
+		select * from review where user_id=#{user_id}
+	</select>
+	
+	<select id="select" resultType="Review" parameterType="integer">
+		select * from review where num=#{num}
+	</select>
+	
+	<select id="selectAllRate" resultType="Review">
+		select album_id, AVG(rate) from review 
+		GROUP BY album_id
+		order by AVG(rate) desc
+	</select>
+	
+	<select id="selectRate" resultType="Review" parameterType="map">
+		select * from review where album_id=#{album_id} 
+		<choose>
+			<when test='order == "asc"'>
+				order by rate asc
+			</when>
+			<otherwise>
+				order by rate desc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="selectLike" resultType="Review" parameterType="String">
+		select * from review where album_id=#{album_id} 
+		<choose>
+			<when test='order == "asc"'>
+				order by like_cnt asc
+			</when>
+			<otherwise>
+				order by like_cnt desc
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insert" parameterType="Review">
+		insert into review (album_id, user_id, user_nickname, comment, rate)
+		values (#{album_id}, #{user_id}, #{user_nickname}, #{comment}, #{rate} / 2)
+	</insert>
+	
+	<update id="update" parameterType="Review">
+		update review set comment=#{comment}
+		where num=#{num} and user_id=#{user_id}
+	</update>
+	
+	<delete id="delete" parameterType="map">
+		delete from review where num=#{num} and user_id=#{user_id}
+	</delete>
+	
+	<delete id="deleteAll" parameterType="String">
+		delete from review where album_id=#{album_id}
+	</delete>
+	
+	<update id="updateLikeCnt" parameterType="map">
+		update review set like_cnt = like_cnt + #{like_cnt}
+		where num=#{num}
+	</update>
+	
+	<insert id="insertReviewLike" parameterType="map">
+		insert into reviewlike (user_id, review_num)
+		values(#{user_id}, #{review_num})
+	</insert>
+	
+	<select id="selectReviewLike" parameterType="map" resultType="Review">
+		select * from reviewlike 
+		where user_id=#{user_id} and review_num=#{review_num}
+	</select>
+	
+	<select id="countReviewCnt" parameterType="integer" resultType="integer">
+		select count(*) from reviewlike where review_num=#{review_num}
+	</select>
+	
+	<delete id="deleteReviewLike" parameterType="map">
+		delete from reviewlike 
+		where user_id=#{user_id} and num=#{num}
+	</delete>
+	
+	<sql id="selectFromReview">
+		select * from review
+	</sql>
+	
+	<select id="selectPage" parameterType="map" resultType="Review">
+		<include refid="selectFromReview" />
+		where album_id=#{album_id} 
+		order by reg_date desc, num desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="searchSelectPage" parameterType="map" resultType="Review">
+		<include refid="selectFromReview" />
+		where album_id=#{album_id}
+		order by reg_date desc, num desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="searchResultCnt" parameterType="String" resultType="int">
+		select count(*) from review
+		where album_id=#{album_id}
+	</select>
+	
+	<select id="selectRandomReview" resultType="Review">
+		select * from review order by rand() limit 1;
+	</select>
+	
+</mapper>

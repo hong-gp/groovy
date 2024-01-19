@@ -1,0 +1,225 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Black';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+div, td, textarea, button, li {
+	font-family: 'Pretendard-Regular';
+}
+.review_container {
+	display: flex;
+	width: 100%;
+}
+
+.review_header {
+	width: 35%;
+	background: #eee;
+	padding: 30px;
+	border-radius: 10px;
+	background: #edf2f4;
+}
+
+.review_header .album_thum {
+	width: 100%;
+}
+
+.review_header .album_thum img {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.review_header .album_track_list ul {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.trck_list_title {
+	margin: 20px 0 10px;
+}
+
+.review_header .album_track_list ul li {
+	display: flex;
+	column-gap: 10px;
+	padding: 7px 10px;
+	border-top: 1px solid #ccc;;
+	font-size: 14px;
+	background: #fff;
+}
+
+.review_header .album_track_list ul li:first-child {
+	border: none;
+	border-radius: 5px 5px 0 0;
+}
+
+.review_header .album_track_list ul li:last-child {
+	border-radius: 0 0 5px 5px;
+}
+
+.review_header .album_track_list ul li:nth-child(even) {
+	background: #e7e7e7;
+}
+
+.review_body {
+	padding-left: 30px;
+	width: 100%;
+}
+
+.review_body .album_title {
+	border-bottom: 2px solid #000;
+	padding-bottom: 10px;
+}
+
+.review_body .album_title h2 {
+	font-size: 22px;
+}
+
+.review_body .album_info table {
+	margin-top: 10px;
+}
+
+.review_body .album_info table tr td {
+	padding: 5px 0;
+}
+
+.review_body .album_info table tr td:first-child {
+	width: 110px;
+	color: #8d99ae;
+}
+
+.review_body .album_info {
+	padding-bottom: 20px;
+}
+
+.review_body .review_write {
+	padding-top: 80px;
+	border-top: 1px solid #ddd;
+}
+
+.review_body .review_write .review_write_title {
+	font-weight: 700;
+	color: #666;
+	margin-bottom: 20px;
+}
+
+.review_body .review_write .review_write_rating {
+	text-align: center;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 20px 0;
+}
+
+.review_body .review_write .review_write_rating i {
+	font-size: 30px;
+	color: goldenrod;
+}
+
+.review_body .review_write .review_write_write {
+	padding-top: 20px;
+}
+
+.review_body .review_write .review_write_write #review_textarea {
+	width: 100%;
+	min-height: 300px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	resize: vertical;
+}
+
+.review_body .review_write .review_write_footer {
+	text-align: right;
+}
+
+.review_body .review_list {
+	margin-top: 100px;
+}
+
+.review_body .review_list .review_list_title {
+	font-weight: 700;
+	color: #666;
+	margin-bottom: 20px;
+}
+
+.review_body .review_list .review_list_body .list_title {
+	background: #eee;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	font-size: 18px;
+}
+
+.review_body .review_list .review_list_body .list_title div:nth-child(2)
+	{
+	word-spacing: -5px;
+	color: gold;
+}
+
+.review_body .review_list .review_list_body .list_content {
+	padding: 5px 0;
+	font-size: 15px;
+}
+
+.review_body .review_list .review_list_body ul li {
+	margin-bottom: 30px;
+}
+
+.review_body .review_list .review_list_body .list_footer {
+	display: flex;
+	justify-content: space-between;
+	font-size: 13px;
+	margin-top: 20px;
+}
+.review_body .review_list .review_list_body .list_footer div:nth-child(1) a {
+	color: #8d99ae;
+}
+.review_body .review_list .review_list_body .list_footer div:nth-child(1) a:hover {
+	color: #2b2d42;
+}
+.likeBtn {
+	color: #ef233c;
+}
+
+.star {
+	position: relative;
+	font-size: 40px;
+	color: #ddd;
+	bottom: 7px;
+}
+
+.star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: gold;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.list_empty {
+	height: 150px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    line-height: 150px;
+}
+.modComment {
+	width: 100%;
+    min-height: 200px;
+    resize: vertical;
+}

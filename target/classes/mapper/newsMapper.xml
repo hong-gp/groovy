@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.project.groovy.News">
+
+	<select id="count" resultType="integer">
+		select count(*) from news
+	</select>
+
+	<select id="selectAll" resultType="News">
+		select * from news order by reg_date desc, num desc;
+	</select>
+	
+	<select id="select" parameterType="integer" resultType="News">
+		select * from news where num=#{num}
+	</select>
+
+	<insert id="insert" parameterType="News">
+		insert into news (title, content, img_src, writer)
+		values (#{title}, #{content}, #{img_src}, #{writer})
+	</insert>
+	
+	<update id="update" parameterType="News">
+		update news set title=#{title}, content=#{content}, img_src=#{img_src}
+		where num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="integer">
+		delete from news where num=#{num}
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from news
+	</delete>
+	
+	<update id="updateCommentCnt" parameterType="map">
+		update news set comment_cnt = comment_cnt + #{comment_cnt}
+		where num=#{num}
+	</update>
+
+</mapper>

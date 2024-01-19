@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.groovy.User">
+
+	<select id="count" resultType="int">
+		select count(*) from user
+	</select>
+
+	<insert id="insert" parameterType="User">
+		insert into user 
+		values (#{id}, #{password}, #{name}, #{nickname}, #{tel}, #{email}, #{birth})
+	</insert>
+
+	<update id="update" parameterType="User">
+		update user set nickname=#{nickname}
+		where id=#{id}
+	</update>
+	
+	<update id="updateAll" parameterType="User">
+		update user set password=#{password}, name=#{name}, nickname=#{nickname}, tel=#{tel}, email=#{email}, birth=#{birth}
+		where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from user where id=#{id}
+	</delete>
+	
+	<select id="select" parameterType="String" resultType="User">
+		select * from user where id=#{id}
+	</select>
+	
+	<select id="selectAll" resultType="User">
+		select * from user
+	</select>
+	
+	<delete id="deleteAll">
+		delete from user
+	</delete>
+	
+	<select id="findByNickname" parameterType="String" resultType="User">
+		select * from user where nickname=#{nickname};
+	</select>
+	
+	<select id="findUserId" parameterType="User" resultType="User">
+		select * from user where name=#{name} AND tel=#{tel} AND email=#{email};
+	</select>
+	
+	<select id="findUserPw" parameterType="User" resultType="User">
+		select * from user where id=#{id} AND name=#{name} AND tel=#{tel} AND email=#{email};
+	</select>
+	
+</mapper>
